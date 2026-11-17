@@ -1,0 +1,47 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Shop | Novora{% endblock %}
+
+{% block content %}
+<section class="shop-page">
+    <aside class="shop-sidebar">
+        <h1 class="shop-title">Shop</h1>
+        <div class="category-list">
+            <button class="category-option active" data-category="">All Products</button>
+            <div id="category-list">
+                <p class="category-loading">Loading categories...</p>
+            </div>
+        </div>
+    </aside>
+
+    <section class="shop-content">
+        <div class="shop-toolbar">
+            <div class="shop-search">
+                <span class="search-symbol">⌕</span>
+                <input type="search" id="product-search" placeholder="Search products..." aria-label="Search products">
+            </div>
+
+            <select id="product-sort" aria-label="Sort products">
+                <option value="newest">Newest</option>
+                <option value="price_asc">Price: Low to High</option>
+                <option value="price_desc">Price: High to Low</option>
+                <option value="name">Name: A to Z</option>
+            </select>
+        </div>
+
+        <div class="shop-result-heading">
+            <span id="product-count">Loading products...</span>
+        </div>
+
+        <div class="product-grid" id="product-grid">
+            <div class="shop-message">Loading products...</div>
+        </div>
+    </section>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/shop.js' %}"></script>
+{% endblock %}

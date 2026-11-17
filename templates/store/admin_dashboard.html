@@ -1,0 +1,80 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Admin Dashboard | Novora{% endblock %}
+
+{% block content %}
+<section class="admin-dashboard">
+    <div class="admin-heading">
+        <div>
+            <p class="cart-eyebrow">NOVORA MANAGEMENT</p>
+            <h1>Dashboard</h1>
+            <p class="muted">Overview of your store performance.</p>
+        </div>
+        <a href="/shop/" class="btn btn-light">View Store ↗</a>
+    </div>
+
+    <div id="dashboard-error" class="auth-error"></div>
+
+    <div class="dashboard-stats">
+        <article class="stat-card">
+            <p>Total Orders</p>
+            <h2 id="total-orders">—</h2>
+            <span>All orders</span>
+        </article>
+
+        <article class="stat-card stat-highlight">
+            <p>Total Revenue</p>
+            <h2 id="total-revenue">—</h2>
+            <span>Excluding cancelled orders</span>
+        </article>
+
+        <article class="stat-card">
+            <p>Low Stock Products</p>
+            <h2 id="low-stock">—</h2>
+            <span>Less than 5 units</span>
+        </article>
+
+        <article class="stat-card">
+            <p>Total Customers</p>
+            <h2 id="total-customers">—</h2>
+            <span>Registered customers</span>
+        </article>
+    </div>
+
+    <div class="dashboard-section">
+        <div class="dashboard-section-heading">
+            <h2>Recent Orders</h2>
+            <a href="/admin/orders/order/" target="_blank">Manage Orders ↗</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Order</th>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="recent-orders">
+                    <tr><td colspan="5">Loading orders...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="dashboard-quick-links">
+        <a href="/admin/store/product/" target="_blank">Manage Products ↗</a>
+        <a href="/admin/store/category/" target="_blank">Manage Categories ↗</a>
+        <a href="/admin/accounts/user/" target="_blank">Manage Users ↗</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/admin-dashboard.js' %}"></script>
+{% endblock %}

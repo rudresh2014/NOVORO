@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Manage Orders | Novora{% endblock %}
+
+{% block content %}
+<section class="admin-orders-page">
+    <div class="orders-page-heading">
+        <div>
+            <p class="eyebrow">STORE MANAGEMENT</p>
+            <h1>Manage Orders</h1>
+            <p>View customer orders and manage their delivery status.</p>
+        </div>
+        <button class="refresh-orders-button" id="refresh-orders">Refresh</button>
+    </div>
+
+    <div class="orders-filter-bar">
+        <input type="search" id="order-search" placeholder="Search order ID or customer...">
+        <select id="order-status-filter">
+            <option value="">All Orders</option>
+            <option value="PLACED">Placed</option>
+            <option value="PACKED">Packed</option>
+            <option value="SHIPPED">Shipped</option>
+            <option value="DELIVERED">Delivered</option>
+            <option value="CANCELLED">Cancelled</option>
+        </select>
+    </div>
+
+    <p id="orders-message" class="orders-message"></p>
+    <div id="admin-orders-list" class="admin-orders-list">
+        <p>Loading orders...</p>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/admin-orders.js' %}"></script>
+{% endblock %}

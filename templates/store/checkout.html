@@ -1,0 +1,53 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Checkout | Novora{% endblock %}
+
+{% block content %}
+<section class="checkout-page">
+    <div class="checkout-heading">
+        <p class="cart-eyebrow">ALMOST THERE</p>
+        <h1>Checkout</h1>
+        <p class="muted">Enter your delivery details to place your order.</p>
+    </div>
+
+    <div class="checkout-layout">
+        <form id="checkout-form" class="checkout-form">
+            {% csrf_token %}
+
+            <h2>Delivery Address</h2>
+
+            <label for="shipping-address">Full delivery address</label>
+            <textarea
+                id="shipping-address"
+                name="shipping_address"
+                rows="5"
+                placeholder="House number, street, area, city, state and PIN code"
+                required
+            ></textarea>
+
+            <p id="checkout-error" class="auth-error"></p>
+
+            <button type="submit" id="place-order-button" class="checkout-button">
+                Place Order
+            </button>
+        </form>
+
+        <aside class="cart-summary">
+            <h2>Order Summary</h2>
+            <div id="checkout-items">
+                <p class="muted">Loading your order...</p>
+            </div>
+            <div class="summary-row summary-total">
+                <span>Total</span>
+                <span id="checkout-total">₹0.00</span>
+            </div>
+        </aside>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/checkout.js' %}"></script>
+{% endblock %}

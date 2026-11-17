@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Manage Categories | Novora{% endblock %}
+
+{% block content %}
+<section class="admin-categories-page">
+    <div class="categories-heading">
+        <div>
+            <p class="eyebrow">STORE MANAGEMENT</p>
+            <h1>Manage Categories</h1>
+            <p>Create and organize your store categories.</p>
+        </div>
+        <button id="refresh-categories" class="refresh-orders-button">Refresh</button>
+    </div>
+
+    <div class="categories-layout">
+        <div class="category-form-card">
+            <h2 id="category-form-heading">Add New Category</h2>
+
+            <form id="category-form">
+                <input type="hidden" id="category-id">
+
+                <label for="category-name">Category Name</label>
+                <input type="text" id="category-name" placeholder="e.g. Electronics" required>
+
+                <label for="category-description">Description</label>
+                <textarea id="category-description" rows="5"
+                    placeholder="Describe this category..."></textarea>
+
+                <button type="submit" id="category-save-button">Add Category</button>
+                <button type="button" id="category-reset-button" class="category-reset-button">
+                    Clear
+                </button>
+            </form>
+
+            <p id="category-message"></p>
+        </div>
+
+        <div class="category-list-card">
+            <div class="category-list-heading">
+                <h2>All Categories</h2>
+                <span id="category-count">0 categories</span>
+            </div>
+
+            <div id="admin-category-list">
+                <p>Loading categories...</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/admin-categories.js' %}"></script>
+{% endblock %}

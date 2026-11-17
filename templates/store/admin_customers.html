@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Customers | Novora{% endblock %}
+
+{% block content %}
+<section class="admin-customers-page">
+
+    <div class="customers-heading">
+        <div>
+            <p class="section-eyebrow">STORE MANAGEMENT</p>
+            <h1>Customers</h1>
+            <p>View and manage your registered customers.</p>
+        </div>
+
+        <button class="secondary-button" id="refresh-customers">
+            Refresh
+        </button>
+    </div>
+
+    <div class="customer-stats">
+        <div class="customer-stat-card">
+            <span>Total Customers</span>
+            <strong id="customer-count">0</strong>
+        </div>
+        <div class="customer-stat-card">
+            <span>Active Customers</span>
+            <strong id="active-customer-count">0</strong>
+        </div>
+        <div class="customer-stat-card">
+            <span>Inactive Customers</span>
+            <strong id="inactive-customer-count">0</strong>
+        </div>
+    </div>
+
+    <div class="customers-list-panel">
+        <div class="customers-toolbar">
+            <div>
+                <h2>Customer Directory</h2>
+                <p>Registered customer accounts</p>
+            </div>
+
+            <div class="customers-controls">
+                <input
+                    type="search"
+                    id="customer-search"
+                    placeholder="Search name or email..."
+                >
+
+                <select id="customer-status-filter">
+                    <option value="all">All Customers</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="customer-message" class="customer-message"></div>
+
+        <div class="customers-table-wrapper">
+            <table class="customers-table">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Email</th>
+                        <th>Joined On</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="admin-customer-list">
+                    <tr>
+                        <td colspan="4">Loading customers...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/admin-customers.js' %}"></script>
+{% endblock %}

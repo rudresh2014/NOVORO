@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Orders | Novora{% endblock %}
+
+{% block content %}
+<section class="orders-page">
+    <div class="orders-heading">
+        <p class="cart-eyebrow">YOUR PURCHASES</p>
+        <h1>My Orders</h1>
+        <p class="muted">Track and manage your orders.</p>
+    </div>
+
+    <div id="orders-list">
+        <p class="shop-message">Loading your orders...</p>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/orders.js' %}"></script>
+{% endblock %}

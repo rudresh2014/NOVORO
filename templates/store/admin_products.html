@@ -1,0 +1,132 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Manage Products | NOVORA{% endblock %}
+
+{% block content %}
+<section class="chiguru-inventory">
+
+    <div class="inventory-header">
+        <div>
+            <p class="inventory-eyebrow">NOVORA / STORE MANAGEMENT</p>
+            <h1>Product Inventory</h1>
+            <p class="inventory-subtitle">Manage your products, pricing, stock and images.</p>
+        </div>
+        <a href="/dashboard/" class="inventory-back">← Back to Dashboard</a>
+    </div>
+
+    <div class="inventory-content">
+
+        <section class="inventory-form-panel">
+            <div class="inventory-panel-heading">
+                <div>
+                    <span class="inventory-step">PRODUCT DETAILS</span>
+                    <h2 id="product-form-heading">Add New Product</h2>
+                </div>
+                <span class="inventory-heading-icon">＋</span>
+            </div>
+
+            <form id="product-form" enctype="multipart/form-data">
+
+                <input type="hidden" id="edit-product-id">
+
+                <div class="inventory-field">
+                    <label for="admin-product-name">Product name</label>
+                    <input id="admin-product-name" type="text"
+                           placeholder="e.g. Wireless Mouse" required>
+                </div>
+
+                <div class="inventory-field">
+                    <label for="admin-product-description">Description</label>
+                    <textarea id="admin-product-description" rows="3"
+                              placeholder="Describe your product..." required></textarea>
+                </div>
+
+                <div class="inventory-two-fields">
+                    <div class="inventory-field">
+                        <label for="admin-product-price">Price (₹)</label>
+                        <input id="admin-product-price" type="number"
+                               min="0.01" step="0.01" placeholder="599" required>
+                    </div>
+
+                    <div class="inventory-field">
+                        <label for="admin-product-stock">Stock quantity</label>
+                        <input id="admin-product-stock" type="number"
+                               min="0" placeholder="20" required>
+                    </div>
+                </div>
+
+                <div class="inventory-field">
+                    <label for="admin-product-category">Category</label>
+                    <select id="admin-product-category" required>
+                        <option value="">Select category</option>
+                    </select>
+                </div>
+
+                <div class="inventory-field">
+                    <label>Product photograph</label>
+                    <label for="admin-product-image-file" class="inventory-upload">
+                        <span class="upload-icon">↑</span>
+                        <strong>Choose an image</strong>
+                        <span>JPG, PNG or WebP</span>
+                        <input id="admin-product-image-file" type="file" accept="image/*">
+                    </label>
+                    <p class="inventory-help">Leave empty when editing to keep the current image.</p>
+                </div>
+
+                <div id="admin-image-preview" class="inventory-preview" hidden>
+                    <img id="admin-preview-image" alt="Product image preview">
+                </div>
+
+                <div class="inventory-field">
+                    <label for="admin-product-image">Or paste an image URL</label>
+                    <input id="admin-product-image" type="url"
+                           placeholder="https://example.com/image.jpg">
+                </div>
+
+                <label class="inventory-active">
+                    <input id="admin-product-active" type="checkbox" checked>
+                    <span class="inventory-toggle-text">
+                        <strong>Product is active</strong>
+                        <small>Visible to customers in the shop</small>
+                    </span>
+                </label>
+
+                <div class="inventory-actions">
+                    <button type="submit" id="save-product-button" class="inventory-save">
+                        Save Product
+                    </button>
+                    <button type="button" id="reset-product-button" class="inventory-reset">
+                        Clear
+                    </button>
+                </div>
+
+                <p id="product-admin-message" class="inventory-message" role="status"></p>
+            </form>
+        </section>
+
+        <section class="inventory-list-panel">
+            <div class="inventory-list-header">
+                <div>
+                    <span class="inventory-step">YOUR COLLECTION</span>
+                    <h2>All Products</h2>
+                    <p>Manage your store inventory.</p>
+                </div>
+                <button type="button" id="refresh-products" class="inventory-refresh">
+                    ↻ Refresh
+                </button>
+            </div>
+
+            <div id="admin-product-list" class="inventory-product-list">
+                <p class="inventory-loading">Loading products...</p>
+            </div>
+        </section>
+
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/admin-products.js' %}"></script>
+{% endblock %}

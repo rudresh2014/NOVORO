@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Shopping Cart | Novora{% endblock %}
+
+{% block content %}
+<section class="cart-page">
+    <div class="cart-heading">
+        <div>
+            <p class="cart-eyebrow">YOUR SELECTION</p>
+            <h1>Shopping Cart</h1>
+        </div>
+        <a href="/shop/" class="continue-shopping">← Continue Shopping</a>
+    </div>
+
+    <div class="cart-layout">
+        <div class="cart-items" id="cart-items">
+            <p class="shop-message">Loading your cart...</p>
+        </div>
+
+        <aside class="cart-summary" id="cart-summary">
+            <h2>Order Summary</h2>
+            <div class="summary-row">
+                <span>Items</span>
+                <span id="cart-item-count">0</span>
+            </div>
+            <div class="summary-row summary-total">
+                <span>Total</span>
+                <span id="cart-total">₹0.00</span>
+            </div>
+            <button class="checkout-button" id="checkout-button">
+                Proceed to Checkout
+            </button>
+            <p class="cart-note">Shipping charges, if applicable, are calculated at checkout.</p>
+        </aside>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/cart.js' %}"></script>
+{% endblock %}
